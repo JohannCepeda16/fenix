@@ -14,18 +14,15 @@ export default function StartPanel(props: IPanelContainer & any) {
   const infringement = props.infringement;
   const setInfringement = props.setInfringement;
   const handleCheckBox = (id: string) => {
-    console.log(id);
     setInfringement({ ...infringement, type: id });
   };
 
   return (
     <div>
       <div style={{ display: "flex" }}>
-        <AccountCircleSharp style={{ alignSelf: "center", padding: "2px" }} />
         <label
           style={{
             fontSize: "1rem",
-            marginLeft: "5px",
             alignSelf: "center",
           }}
         >
@@ -34,35 +31,28 @@ export default function StartPanel(props: IPanelContainer & any) {
       </div>
       <div>
         <div className="Modal-item">
-          <DateRange className="Modal-item-icon" fontSize="small" />
           <label className="Modal-item-label">
             <strong>Fecha de agendamiento:</strong>
             {infringement.schedulingDate}
           </label>
         </div>
         <div className="Modal-item">
-          <DateRange className="Modal-item-icon" fontSize="small" />
           <label className="Modal-item-label">
             <strong>Hora:</strong> {infringement.time}
           </label>
         </div>
         <div className="Modal-item">
-          <EventSeat className="Modal-item-icon" fontSize="small" />
           <label className="Modal-item-label">
             <strong>No. cubículo:</strong> {infringement.cubicleNumber}
           </label>
         </div>
         <div className="Modal-item">
-          <ConfirmationNumberOutlined
-            className="Modal-item-icon"
-            fontSize="small"
-          />
           <label className="Modal-item-label">
             <strong>No. de turno:</strong> {infringement.shiftNumber}
           </label>
         </div>
       </div>
-      <div>
+      <div style={{ marginTop: "20px" }}>
         <FormControlLabel
           checked={infringement.type == "attorney" ? true : false}
           control={<GreenCheckbox size="small" name="attorney" />}

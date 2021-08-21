@@ -2,7 +2,7 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import TextField from "@material-ui/core/TextField";
-import AccountCircle from "@material-ui/icons/AccountCircle";
+import PersonIcon from '@material-ui/icons/Person';
 import RecentActorsIcon from "@material-ui/icons/RecentActors";
 import PublishIcon from "@material-ui/icons/Publish";
 import { IPanelContainer } from "./types/Controller";
@@ -32,7 +32,7 @@ export default function AttorneyPanel(props: IPanelContainer) {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <AccountCircle />
+                <PersonIcon />
               </InputAdornment>
             ),
           }}
@@ -51,7 +51,7 @@ export default function AttorneyPanel(props: IPanelContainer) {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <AccountCircle />
+                <PersonIcon />
               </InputAdornment>
             ),
           }}

@@ -1,5 +1,4 @@
 import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import { useState } from "react";
@@ -10,7 +9,7 @@ import createStyles from "@material-ui/core/styles/createStyles";
 import { Theme } from "@material-ui/core/styles/createTheme";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import AccountCircle from "@material-ui/icons/AccountCircle";
+import PersonIcon from '@material-ui/icons/Person';
 import Grid from "@material-ui/core/Grid/Grid";
 
 export default function IntervenningPanel() {
@@ -38,7 +37,7 @@ export default function IntervenningPanel() {
           style={{ display: "block" }}
           renderValue={(value) => (
             <div style={{ display: "flex" }}>
-              <AccountCircle />
+              <PersonIcon />
               <span style={{ marginLeft:"10px", alignSelf: "center" }}> {value}</span>
             </div>
           )}
@@ -68,7 +67,7 @@ export default function IntervenningPanel() {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <AccountCircle />
+                <PersonIcon />
               </InputAdornment>
             ),
           }}
@@ -87,7 +86,7 @@ export default function IntervenningPanel() {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <AccountCircle />
+                <PersonIcon />
               </InputAdornment>
             ),
           }}

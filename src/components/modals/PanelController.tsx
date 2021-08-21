@@ -47,6 +47,7 @@ export default function ModalContainer(props: IPanelContainer) {
           direction="row"
           justifyContent="space-between"
           alignItems="center"
+          style={{marginBottom:"20px"}}
         >
           {step == 1 ? (
             <div style={{}}>
@@ -111,6 +112,8 @@ export default function ModalContainer(props: IPanelContainer) {
                 color: "#a9ba18",
                 borderColor: "#a9ba18",
                 margin: "10px",
+                paddingLeft:'40px',
+                paddingRight:"40px"
               }}
               onClick={() => cancelAction()}
             >
@@ -120,9 +123,11 @@ export default function ModalContainer(props: IPanelContainer) {
           <Button
             variant="contained"
             style={{
-              color: "white",
+              color: "black",
               backgroundColor: "#a9ba18",
               margin: "10px",
+              paddingLeft:'40px',
+              paddingRight:"40px",
             }}
             onClick={() => continueAction()}
           >
