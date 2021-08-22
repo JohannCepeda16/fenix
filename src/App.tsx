@@ -22,6 +22,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Header</h1>
       <PanelContainer
         infringement={infringement}
         setInfringement={setInfringement}
