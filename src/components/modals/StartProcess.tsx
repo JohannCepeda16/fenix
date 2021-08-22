@@ -1,10 +1,4 @@
-import AccountCircleSharp from "@material-ui/icons/AccountCircleSharp";
-import DateRange from "@material-ui/icons/DateRange";
-import ConfirmationNumberOutlined from "@material-ui/icons/ConfirmationNumberOutlined";
-import EventSeat from "@material-ui/icons/EventSeat";
-import Button from "@material-ui/core/Button";
 import { IPanelContainer } from "./types/Controller";
-import { useState } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Checkbox, { CheckboxProps } from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -54,14 +48,14 @@ export default function StartPanel(props: IPanelContainer & any) {
       </div>
       <div style={{ marginTop: "20px" }}>
         <FormControlLabel
-          checked={infringement.type == "attorney" ? true : false}
+          checked={infringement.type === "attorney" ? true : false}
           control={<GreenCheckbox size="small" name="attorney" />}
           label="Tiene apoderado?*"
           color="#6b6b6b"
           onChange={() => handleCheckBox("attorney")}
         />
         <FormControlLabel
-          checked={infringement.type == "intervenning" ? true : false}
+          checked={infringement.type === "intervenning" ? true : false}
           control={<GreenCheckbox size="small" name="intervenning" />}
           label="Tiene intervinientes?*"
           color="#6b6b6b"

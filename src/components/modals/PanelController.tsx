@@ -8,7 +8,6 @@ import IconButton from "@material-ui/core/IconButton";
 import IntervenningPanel from "./IntervenningPanel";
 import Button from "@material-ui/core/Button";
 import AttorneyPanel from "./AttorneyPanel";
-import { Star } from "@material-ui/icons";
 import EndProcess from "./EndProcess";
 
 export default function ModalContainer(props: IPanelContainer) {
@@ -17,10 +16,10 @@ export default function ModalContainer(props: IPanelContainer) {
   const [step, setStep] = useState(0);
 
   const continueAction = () => {
-    console.log(infringement.type);
+    console.log(infringement);
     if (step >= 0 && step < 2) {
       setStep(step + 1);
-    } else if (step == 2) {
+    } else if (step === 2) {
       startProcess();
     }
   };
@@ -45,7 +44,7 @@ export default function ModalContainer(props: IPanelContainer) {
             alignItems="center"
             style={{marginBottom:"20px"}}
           >
-            {step == 1 ? (
+            {step === 1 ? (
               <div style={{}}>
                 <IconButton
                   style={{
@@ -73,7 +72,7 @@ export default function ModalContainer(props: IPanelContainer) {
             </div>
           </Grid>
           {/**Primer popUp al ejecutar la accion */}
-          {step == 0 && (
+          {step === 0 && (
             <StartProcess
               infringement={infringement}
               setInfringement={props.setInfringement}
@@ -82,18 +81,18 @@ export default function ModalContainer(props: IPanelContainer) {
             />
           )}
           {/** Segundo popUp al continuar con el proceso && NO APODERADO */}
-          {step == 1 && infringement.type == "intervenning" && (
+          {step === 1 && infringement.type === "intervenning" && (
             <IntervenningPanel />
           )}
           {/** Segundo popUp al continuar con el proceso && APODERADO */}
-          {step == 1 && infringement.type == "attorney" && (
+          {step === 1 && infringement.type === "attorney" && (
             <AttorneyPanel
               setInfringement={props.setInfringement}
               infringement={infringement}
             />
           )}
           {/** Tercer popUp al terminar el proceso */}
-          {step == 2 && (
+          {step === 2 && (
             <EndProcess
               infringement={infringement}
               setInfringement={props.setInfringement}
@@ -101,7 +100,7 @@ export default function ModalContainer(props: IPanelContainer) {
           )}
 
           <div style={{ float: "right", marginTop: "20px" }}>
-            {step != 2 && (
+            {step !== 2 && (
               <Button
                 variant="outlined"
                 style={{
@@ -127,7 +126,7 @@ export default function ModalContainer(props: IPanelContainer) {
               }}
               onClick={() => continueAction()}
             >
-              {step == 0 ? "Continuar" : step == 1 ? "Iniciar" : "Aceptar"}
+              {step === 0 ? "Continuar" : step === 1 ? "Iniciar" : "Aceptar"}
             </Button>
           </div>
         </div>

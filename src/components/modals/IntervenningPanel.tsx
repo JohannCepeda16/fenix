@@ -2,23 +2,48 @@ import FormControl from "@material-ui/core/FormControl";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import { useState } from "react";
+import Button from "@material-ui/core/Button"
 import "./ModalView.scss";
 import RecentActorsIcon from "@material-ui/icons/RecentActors";
-import makeStyles from "@material-ui/core/styles/makeStyles";
-import createStyles from "@material-ui/core/styles/createStyles";
-import { Theme } from "@material-ui/core/styles/createTheme";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import PersonIcon from '@material-ui/icons/Person';
 import Grid from "@material-ui/core/Grid/Grid";
 
+export interface IInterviening{
+  type:string,
+  name: string,
+  lastName:string,
+  idCard:string,
+  licenseNumber:string
+}
+
 export default function IntervenningPanel() {
   const [selected, setSelected] = useState("Selecciona el tipo de interviniente");
-  const classes = useStyles();
+  const initialStateInterviening = {type:"", name:"", lastName:"", idCard:"", licenseNumber:""};
+  const [interviening, setInterviening] = useState<IInterviening>(initialStateInterviening);
+  const [intervienings, setIntervienings] = useState<IInterviening[]>([]);
 
   const handleSelect = (data: any) => {
     setSelected(data.target.value);
   };
+
+  const handleData = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) =>{
+    setInterviening({...interviening, [e.target.name]: e.target.value});
+  }
+
+  const addInterviening = () => {
+    if(!intervienings.includes(interviening)){
+      let currentIntervienings = intervienings;
+      currentIntervienings.push(interviening);
+      console.log(currentIntervienings);
+      setInterviening(initialStateInterviening);
+      setIntervienings(currentIntervienings);
+    }else{
+      console.log("Duplicated data")
+    }
+
+  }
 
   return (
     <div>
@@ -55,6 +80,9 @@ export default function IntervenningPanel() {
       >
         <TextField
           variant="filled"
+          name="name"
+          value={interviening.name || ""}
+          onChange={(e) => handleData(e)}
           style={{
             alignSelf: "center",
             width: "48%",
@@ -62,7 +90,7 @@ export default function IntervenningPanel() {
             marginRight: "auto",
           }}
           size="small"
-          id="input-with-icon-textfield"
+          id="nameField"
           placeholder="Nombre"
           InputProps={{
             startAdornment: (
@@ -74,6 +102,9 @@ export default function IntervenningPanel() {
         />
         <TextField
           variant="filled"
+          name="lastName"
+          value={interviening.lastName}
+          onChange={(e) => handleData(e)}
           style={{
             alignSelf: "center",
             width: "48%",
@@ -81,7 +112,7 @@ export default function IntervenningPanel() {
             marginLeft: "auto",
           }}
           size="small"
-          id="input-with-icon-textfield"
+          id="lastNameField"
           placeholder="Apellido"
           InputProps={{
             startAdornment: (
@@ -100,6 +131,9 @@ export default function IntervenningPanel() {
       >
         <TextField
           variant="filled"
+          name="idCard"
+          value={interviening.idCard}
+          onChange={(e) => handleData(e)}
           style={{
             alignSelf: "center",
             width: "48%",
@@ -107,7 +141,7 @@ export default function IntervenningPanel() {
             marginRight: "auto",
           }}
           size="small"
-          id="input-with-icon-textfield"
+          id="idCardField"
           placeholder="No de cédula"
           InputProps={{
             startAdornment: (
@@ -119,6 +153,9 @@ export default function IntervenningPanel() {
         />
         <TextField
           variant="filled"
+          name="licenseNumber"
+          value={interviening.licenseNumber}
+          onChange={(e) => handleData(e)}
           style={{
             alignSelf: "center",
             width: "48%",
@@ -126,7 +163,7 @@ export default function IntervenningPanel() {
             marginLeft: "auto",
           }}
           size="small"
-          id="input-with-icon-textfield"
+          id="licenseNumberField"
           placeholder="No de carnet"
           InputProps={{
             startAdornment: (
@@ -137,18 +174,7 @@ export default function IntervenningPanel() {
           }}
         />
       </Grid>
+      <Button onClick={() => addInterviening()}>Guardar</Button>
     </div>
   );
 }
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    formControl: {
-      margin: theme.spacing(1),
-      minWidth: 120,
-    },
-    selectEmpty: {
-      marginTop: theme.spacing(2),
-    },
-  })
-);
