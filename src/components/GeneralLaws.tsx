@@ -2,24 +2,40 @@ import { IPanelContainer } from "./types/Controller";
 import "./modals/ModalView.scss";
 import Button from "@material-ui/core/Button";
 import React, { useState } from "react";
+import { useFormik } from "formik";
 
 export default function GeneralLaws(props: IPanelContainer) {
   const infringement = props.infringement;
   const [localData, setLocalData] = useState({});
-  const [attorneyInfo, setAttorneyInfo] = useState({
-    age: "",
-    maritalStatus: "SOLTERO",
-    address: "",
-    phoneNumber: "",
-    ocupation: "",
-    email: "",
-  });
+  const [attorneyInfo, setAttorneyInfo] = useState("");
 
-  const handleAttorneyData = (
-    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement>
-  ) => {
-    setAttorneyInfo({ ...attorneyInfo, [e.target.name]: e.target.value });
-  };
+  const formik = useFormik({
+    initialValues: {
+      age: 18,
+      maritalStatus: "SOLTERO",
+      address: "",
+      phoneNumber: "",
+      ocupation: "",
+      email: "",
+    },
+    validate: (values) => {
+      const errors = { age: "", email: "" };
+      if (values.age < 0 || values.age > 99) {
+        errors.age = "Edad invalida";
+      } else if (
+        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+      ) {
+        errors.email = "Email invalido";
+      }
+
+      return errors;
+    },
+    onSubmit: (values) => {
+      console.log("submiting...");
+      setAttorneyInfo(JSON.stringify(values, null, 2));
+      console.log(JSON.stringify(values, null, 2));
+    },
+  });
 
   const continueAction = () => {
     let currentdate = new Date();
@@ -34,8 +50,6 @@ export default function GeneralLaws(props: IPanelContainer) {
       offender: infringement.name,
       offenderIdCard: infringement.id,
     });
-
-    console.log(attorneyInfo);
   };
 
   const cancelAction = () => {
@@ -105,98 +119,111 @@ export default function GeneralLaws(props: IPanelContainer) {
             Suspendisse ut pretium magna. Sed non sem dapibus, vulputate nisl
             et, posuere ex.
           </p>
-          {
-            <p className="Scroll-content" style={{ textAlign: "left" }}>
-              Acto seguido, esta AUTORIDAD DE TRANSITO procede a indagar sobre
-              sus generalidades de ley. EDAD:
-              <input
-                name="age"
-                value={attorneyInfo.age}
-                onChange={(e) => handleAttorneyData(e)}
-                placeholder="28"
-                className="input-plus"
-                style={{ width: "25px" }}
-              />
-              ESTADO CIVIL:
-              <select
-                name="maritalStatus"
-                onChange={(e) => handleAttorneyData(e)}
-                defaultValue="CADADO"
-                style={{ marginLeft: "10px" }}
+          <form onSubmit={formik.handleSubmit}>
+            {
+              <p className="Scroll-content" style={{ textAlign: "left" }}>
+                Acto seguido, esta AUTORIDAD DE TRANSITO procede a indagar sobre
+                sus generalidades de ley. EDAD:
+                <input
+                  name="age"
+                  value={formik.values.age}
+                  onChange={formik.handleChange}
+                  placeholder="28"
+                  className="input-plus"
+                  style={{ width: "25px" }}
+                  required
+                />
+                ESTADO CIVIL:
+                <select
+                  name="maritalStatus"
+                  value={formik.values.maritalStatus}
+                  onChange={formik.handleChange}
+                  style={{ marginLeft: "10px" }}
+                >
+                  <option value="CASADO">CASADO</option>
+                  <option value="SOLTERO">SOLTERO</option>
+                </select>
+                <br />
+                DIRECCION DE RESIDENCIA:{" "}
+                <input
+                  name="address"
+                  value={formik.values.address}
+                  onChange={formik.handleChange}
+                  placeholder="carrera 104 NO 15a - 72"
+                  style={{ width: "300px", textTransform: "uppercase" }}
+                  required
+                />
+                <br />
+                NUMERO TELEFONO:
+                <input
+                  name="phoneNumber"
+                  value={formik.values.phoneNumber}
+                  onChange={formik.handleChange}
+                  className="input-plus"
+                  placeholder="32150692935"
+                  style={{ width: "110px" }}
+                  required
+                />
+                PROFESION Y OFICIO:
+                <input
+                  name="ocupation"
+                  value={formik.values.ocupation}
+                  onChange={formik.handleChange}
+                  className="input-plus"
+                  placeholder="Médico"
+                  style={{ width: "102px" }}
+                  required
+                />
+                En este estado de la diligencia, el Despacho indaga con el
+                impugnante, si tiene un correto electrónico en caso de ser
+                requerido por esta autoridad de Tránsuto a efecto de
+                notificarlom quien manifiesta:
+                <input
+                  placeholder="example@example.com"
+                  name="email"
+                  autoComplete="email"
+                  type="email"
+                  value={formik.values.email}
+                  onChange={formik.handleChange}
+                  className="input-plus"
+                  required
+                />
+              </p>
+            }
+            <label className="Formik-error">
+              {formik.errors.age || formik.errors.email}
+            </label>
+            <div style={{ float: "right" }}>
+              <Button
+                variant="outlined"
+                style={{
+                  color: "#a9ba18",
+                  borderColor: "#a9ba18",
+                  margin: "10px",
+                  paddingLeft: "40px",
+                  paddingRight: "40px",
+                }}
+                onClick={() => cancelAction()}
               >
-                <option value="CASADO">CASADO</option>
-                <option value="SOLTERO">SOLTERO</option>
-              </select>
-              <br />
-              DIRECCION DE RESIDENCIA:{" "}
-              <input
-                name="address"
-                value={attorneyInfo.address}
-                onChange={(e) => handleAttorneyData(e)}
-                placeholder="carrera 104 NO 15a - 72"
-                style={{ width: "300px", textTransform: "uppercase" }}
-              />
-              <br />
-              NUMERO TELEFONO:
-              <input
-                name="phoneNumber"
-                value={attorneyInfo.phoneNumber}
-                onChange={(e) => handleAttorneyData(e)}
-                className="input-plus"
-                placeholder="32150692935"
-                style={{ width: "110px" }}
-              />
-              PROFESION Y OFICIO:
-              <input
-                name="ocupation"
-                value={attorneyInfo.ocupation}
-                onChange={(e) => handleAttorneyData(e)}
-                className="input-plus"
-                placeholder="Médico"
-                style={{ width: "102px" }}
-              />{" "}
-              En este estado de la diligencia, el Despacho indaga con el
-              impugnante, si tiene un correto electrónico en caso de ser
-              requerido por esta autoridad de Tránsuto a efecto de notificarlom
-              quien manifiesta:
-              <input
-                placeholder="example@example.com"
-                name="email"
-                value={attorneyInfo.email}
-                onChange={(e) => handleAttorneyData(e)}
-                className="input-plus"
-              />
-            </p>
-          }
-          <div style={{ float: "right" }}>
-            <Button
-              variant="outlined"
-              style={{
-                color: "#a9ba18",
-                borderColor: "#a9ba18",
-                margin: "10px",
-                paddingLeft: "40px",
-                paddingRight: "40px",
-              }}
-              onClick={() => cancelAction()}
-            >
-              Cancelar
-            </Button>
+                Cancelar
+              </Button>
 
-            <Button
-              variant="contained"
-              style={{
-                color: "black",
-                backgroundColor: "#bed000",
-                margin: "10px",
-                paddingLeft: "40px",
-                paddingRight: "40px",
-              }}
-              onClick={() => continueAction()}
-            >
-              Guardar
-            </Button>
-          </div>
+              <Button
+                variant="contained"
+                style={{
+                  color: "black",
+                  backgroundColor: "#bed000",
+                  margin: "10px",
+                  paddingLeft: "40px",
+                  paddingRight: "40px",
+                }}
+                type="submit"
+                onClick={() => continueAction()}
+              >
+                Guardar
+              </Button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

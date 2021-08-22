@@ -87,17 +87,17 @@
   padding: 10px;
 }
 
-.Scroll-content{
-    text-align: justify;
-    color: #6b6b6b;
-    margin-right: 10px;
+.Scroll-content {
+  text-align: justify;
+  color: #6b6b6b;
+  margin-right: 10px;
 }
 
-.input-plus{
-    margin-left: 10px;
-    margin-right: 10px;
-    color:#000;
-    text-align: center;
+.input-plus {
+  margin-left: 10px;
+  margin-right: 10px;
+  color: #000;
+  text-align: center;
 }
 
 /*Scrollbar configuration */
@@ -114,4 +114,10 @@
 
 ::-webkit-scrollbar-corner {
   background: #000;
+}
+
+.Formik-error {
+  color: red;
+  text-align: center;
+  display: block;
 }
