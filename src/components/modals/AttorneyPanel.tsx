@@ -10,9 +10,17 @@ import "./ModalView.scss";
 import React, { useState } from "react";
 import { useEffect } from "react";
 
+export interface IAttorney{
+  name: string,
+  lastName: string,
+  professionalRegistration:string,
+  file: any
+}
+
 export default function AttorneyPanel(props: IPanelContainer) {
 
-  const [attorney, setAttorney] = useState({name:"", lastName:"", professionalRegistration:"", file:{}});
+  const initialStateAttorney = {name:"", lastName:"", professionalRegistration:"", file: null};
+  const [attorney, setAttorney] = useState<IAttorney>(initialStateAttorney);
   const [selectedFile, setSelectedFile] = useState({name: ""});
   const setInfringement = props.setInfringement;
   const infringement = props.infringement;

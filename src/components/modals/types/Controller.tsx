@@ -15,7 +15,8 @@ export interface IInfringement extends IStateReact{
   cubicleNumber: number;
   shiftNumber: number;
   type: string,
-  processNumber: string
+  processNumber: string,
+  status: string
 }
 
 export interface IStateReact{
