@@ -1,4 +1,4 @@
-import { IPanelContainer } from "./types/Controller";
+import { IPanelContainer } from "../types/Controller";
 
 export default function EndProcess(props: IPanelContainer) {
   const infringement = props.infringement;

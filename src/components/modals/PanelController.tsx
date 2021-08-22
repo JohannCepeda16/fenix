@@ -1,6 +1,6 @@
 import { Grid } from "@material-ui/core";
 import StartProcess from "./StartProcess";
-import { IPanelContainer } from "./types/Controller";
+import { IPanelContainer } from "../types/Controller";
 import KeyboardBackspace from "@material-ui/icons/KeyboardBackspace";
 import "./ModalView.scss";
 import { useState } from "react";

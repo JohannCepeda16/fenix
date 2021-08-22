@@ -5,7 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import PersonIcon from '@material-ui/icons/Person';
 import RecentActorsIcon from "@material-ui/icons/RecentActors";
 import PublishIcon from "@material-ui/icons/Publish";
-import { IPanelContainer } from "./types/Controller";
+import { IPanelContainer } from "../types/Controller";
 import "./ModalView.scss";
 import React, { useState } from "react";
 import { useEffect } from "react";

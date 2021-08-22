@@ -1,7 +1,7 @@
-import React from "react";
 import PanelContainer from "./components/modals/PanelController";
 import "./App.css";
 import { useState } from "react";
+import GeneralLaws from "./components/GeneralLaws";
 
 function App() {
   const infringementInitialState = {
@@ -12,7 +12,8 @@ function App() {
     cubicleNumber: 50,
     shiftNumber: 550,
     type: "intervenning",
-    processNumber:"202108-123"
+    processNumber:"202108-123",
+    status: "NO INICIADO"
   };
 
   const [infringement, setInfringement] = useState(infringementInitialState);
@@ -23,12 +24,15 @@ function App() {
   return (
     <div className="App">
       <h1>Header</h1>
-      <PanelContainer
-        infringement={infringement}
-        setInfringement={setInfringement}
-        visibile={modalVisible}
-        setModalVisible={setModalVisible}
-      />
+      {/*
+        <PanelContainer
+          infringement={infringement}
+          setInfringement={setInfringement}
+          visibile={modalVisible}
+          setModalVisible={setModalVisible}
+        />
+      */}
+      <GeneralLaws infringement={infringement} setInfringement={setInfringement}/>
     </div>
   );
 }

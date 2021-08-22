@@ -1,4 +1,4 @@
-import { IPanelContainer } from "./types/Controller";
+import { IPanelContainer } from "../types/Controller";
 import { withStyles } from "@material-ui/core/styles";
 import Checkbox, { CheckboxProps } from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
