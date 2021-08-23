@@ -3,6 +3,8 @@ import "./App.css";
 import { useState } from "react";
 import GeneralLaws from "./components/GeneralLaws";
 import FreeVersionForm from "./components/forms/FreeVersionForm";
+import ProcessHeader from "./components/commons/ProcessHeader";
+import ProofView from "./components/process/proofs/ProofView";
 
 function App() {
   const infringementInitialState = {
@@ -13,8 +15,8 @@ function App() {
     cubicleNumber: 50,
     shiftNumber: 550,
     type: "intervenning",
-    processNumber:"202108-123",
-    status: "NO INICIADO"
+    processNumber: "202108-123",
+    status: "NO INICIADO",
   };
 
   const [infringement, setInfringement] = useState(infringementInitialState);
@@ -24,22 +26,26 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Header</h1>
-      {
-        false &&
+      {false && (
         <PanelContainer
           infringement={infringement}
           setInfringement={setInfringement}
           visibile={modalVisible}
           setModalVisible={setModalVisible}
         />
-      }
+      )}
+      {false && (
+        <GeneralLaws
+          infringement={infringement}
+          setInfringement={setInfringement}
+        />
+      )}
+      {false && <FreeVersionForm />}
       {
-        false &&
-        <GeneralLaws infringement={infringement} setInfringement={setInfringement}/>
-      }
-      {
-        <FreeVersionForm />
+        <ProofView
+          infringement={infringement}
+          setInfringement={setInfringement}
+        />
       }
     </div>
   );

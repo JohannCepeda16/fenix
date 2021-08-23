@@ -1,0 +1,25 @@
+.Container {
+  padding: 20px;
+  box-shadow: 0.5px 0.5px 1px 1px #e6e6e4;
+  border-radius: 10px;
+}
+
+.Process-tittle {
+  color: "#3b3c4b";
+}
+
+.Item-container {
+  flex-direction: column;
+  display: inline-block;
+  width: auto;
+  width: 20%;
+}
+
+.List-item {
+  margin: 10px;
+  margin-left: 0;
+  display: inline-block;
+  display: block;
+  color: #3b3c4b;
+  font-size: 1rem;
+}

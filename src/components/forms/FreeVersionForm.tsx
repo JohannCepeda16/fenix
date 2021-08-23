@@ -33,7 +33,7 @@ export default function FreeVersionForm() {
         style={{
           color: "black",
           backgroundColor: "#bed000",
-          margin: "10px",
+          marginTop: "10px",
           paddingLeft: "40px",
           paddingRight: "40px",
         }}
