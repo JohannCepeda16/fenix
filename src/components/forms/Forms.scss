@@ -1,0 +1,22 @@
+.FreeVersionForm {
+  background-color: white;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.TextArea {
+  width: 98%;
+  height: 300px;
+  border-radius: 20px;
+  resize: none;
+  font-size: 1rem;
+  padding-left: 10px;
+  padding-right: 10px;
+  overflow: auto;
+  outline: none;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}

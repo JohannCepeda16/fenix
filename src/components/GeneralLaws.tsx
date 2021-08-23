@@ -1,5 +1,5 @@
 import { IPanelContainer } from "./types/Controller";
-import "./modals/ModalView.scss";
+import "./process/ModalView.scss";
 import Button from "@material-ui/core/Button";
 import React, { useState } from "react";
 import { useFormik } from "formik";

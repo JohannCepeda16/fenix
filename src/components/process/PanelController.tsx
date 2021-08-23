@@ -20,7 +20,7 @@ export default function ModalContainer(props: IPanelContainer) {
     if (step >= 0 && step < 2) {
       setStep(step + 1);
     } else if (step === 2) {
-      props.setInfringement({...infringement, status: "INICIADO"})
+      props.setInfringement({...infringement, status: "Iniciado"})
       startProcess();
     }
   };

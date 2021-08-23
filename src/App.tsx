@@ -1,7 +1,8 @@
-import PanelContainer from "./components/modals/PanelController";
+import PanelContainer from "./components/process/PanelController";
 import "./App.css";
 import { useState } from "react";
 import GeneralLaws from "./components/GeneralLaws";
+import FreeVersionForm from "./components/forms/FreeVersionForm";
 
 function App() {
   const infringementInitialState = {
@@ -24,15 +25,22 @@ function App() {
   return (
     <div className="App">
       <h1>Header</h1>
-      {/*
+      {
+        false &&
         <PanelContainer
           infringement={infringement}
           setInfringement={setInfringement}
           visibile={modalVisible}
           setModalVisible={setModalVisible}
         />
-      */}
-      <GeneralLaws infringement={infringement} setInfringement={setInfringement}/>
+      }
+      {
+        false &&
+        <GeneralLaws infringement={infringement} setInfringement={setInfringement}/>
+      }
+      {
+        <FreeVersionForm />
+      }
     </div>
   );
 }
