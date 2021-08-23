@@ -3,8 +3,9 @@ import "../ModalView.scss";
 import "../../forms/Forms.scss";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import RadioGroup from "@material-ui/core/RadioGroup";
-import Radio from "@material-ui/core/Radio";
+import Radio, { RadioProps } from "@material-ui/core/Radio";
 import Button from "@material-ui/core/Button";
+import withStyles from "@material-ui/core/styles/withStyles";
 
 export default function ListProofs(props: any) {
   const formik = useFormik({
@@ -15,7 +16,7 @@ export default function ListProofs(props: any) {
     },
     onSubmit: (values) => {
       console.log(values);
-      alert("Debe direccionar a la pantalla de pruebas")
+      alert("Debe direccionar a la pantalla de pruebas");
     },
   });
 
@@ -38,7 +39,7 @@ export default function ListProofs(props: any) {
             placeholder="Escribe una descripción"
             style={{
               height: "100px",
-              marginTop:"20px"
+              marginTop: "20px",
             }}
           />
           <RadioGroup
@@ -49,13 +50,15 @@ export default function ListProofs(props: any) {
             <FormControlLabel
               value="A petición de parte"
               onChange={formik.handleChange}
-              control={<Radio />}
+              control={<RadioGreen />}
+              color="#6b6b6b"
               label="A petición de parte*"
             />
             <FormControlLabel
               value="De oficio"
               onChange={formik.handleChange}
-              control={<Radio />}
+              control={<RadioGreen />}
+              color="#6b6b6b"
               label="De oficio*"
             />
           </RadioGroup>
@@ -92,3 +95,13 @@ export default function ListProofs(props: any) {
     </div>
   );
 }
+
+export const RadioGreen = withStyles({
+  root: {
+    color: "gray",
+    "&$checked": {
+      color: "#a9ba18",
+    },
+  },
+  checked: {},
+})((props: RadioProps) => <Radio color="default" {...props} />);

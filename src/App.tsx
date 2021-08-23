@@ -5,6 +5,7 @@ import GeneralLaws from "./components/GeneralLaws";
 import FreeVersionForm from "./components/forms/FreeVersionForm";
 import ProcessHeader from "./components/commons/ProcessHeader";
 import ProofView from "./components/process/proofs/ProofView";
+import LoadProof from "./components/process/proofs/LoadProof";
 
 function App() {
   const infringementInitialState = {
@@ -42,10 +43,15 @@ function App() {
       )}
       {false && <FreeVersionForm />}
       {
+        false &&
         <ProofView
           infringement={infringement}
           setInfringement={setInfringement}
         />
+      }
+      {
+        true &&
+        <LoadProof />
       }
     </div>
   );
