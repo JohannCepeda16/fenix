@@ -1,11 +1,14 @@
 import { useFormik } from "formik";
-import "../../../styles/ModalView.scss"
-import "../../../styles/Forms.scss"
+import "../../../styles/ModalView.scss";
+import "../../../styles/Forms.scss";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import Radio, { RadioProps } from "@material-ui/core/Radio";
 import Button from "@material-ui/core/Button";
 import withStyles from "@material-ui/core/styles/withStyles";
+import TextField from "@material-ui/core/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import LocalOfferIcon from "@material-ui/icons/LocalOffer";
 
 export default function ListProofs(props: any) {
   const formik = useFormik({
@@ -15,8 +18,7 @@ export default function ListProofs(props: any) {
       type: "",
     },
     onSubmit: (values) => {
-      console.log(values);
-      alert("Debe direccionar a la pantalla de pruebas");
+      props.addNewProof(JSON.stringify(values));
     },
   });
 
@@ -29,7 +31,31 @@ export default function ListProofs(props: any) {
       <div className="Modal">
         <h4>Listar pruebas</h4>
         <form onSubmit={formik.handleSubmit}>
-          [preguntar que tipo de input va aqui (diapositiva 25 figma)]
+          <TextField
+            variant="filled"
+            hiddenLabel
+            required
+            name="name"
+            value={formik.values.name}
+            onChange={formik.handleChange}
+            style={{
+              alignSelf: "center",
+              width: "100%",
+              marginTop: "15px",
+              marginRight: "auto",
+              padding: 0,
+            }}
+            size="small"
+            id="nameField"
+            placeholder="Prueba de alcoholemia"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <LocalOfferIcon />
+                </InputAdornment>
+              ),
+            }}
+          />
           <textarea
             required
             onChange={formik.handleChange}
