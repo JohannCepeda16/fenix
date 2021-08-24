@@ -4,9 +4,13 @@ import "../../styles/HistoricalController.scss";
 import { useState } from "react";
 import FreeVersionForm from "./components/FreeVersionForm";
 import ProofView from "./components/ProofView";
+import ProofList from "./components/ProofList";
 
 export default function HistoricalController(props: IPanelContainer) {
-  const [currentPanel, setCurrentPanel] = useState("proofs");
+
+  const [currentPanel, setCurrentPanel] = useState("proofList");
+  const [proofList, setProofList] = useState([]);
+
   return (
     <div className="Historical">
       <ProcessHeader
@@ -21,11 +25,17 @@ export default function HistoricalController(props: IPanelContainer) {
       )}
 
       {currentPanel === "proofs" && (
-        <div>
+        <div className="Historical-panel">
           <ProofView
             infringement={props.infringement}
             setInfringement={props.setInfringement}
           />
+        </div>
+      )}
+
+      {currentPanel === "proofList" && (
+        <div className="Historical-panel">
+          <ProofList proofList={proofList}/>
         </div>
       )}
     </div>
