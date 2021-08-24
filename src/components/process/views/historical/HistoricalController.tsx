@@ -6,7 +6,7 @@ import FreeVersionForm from "./components/FreeVersionForm";
 import ProofView from "./components/ProofView";
 
 export default function HistoricalController(props: IPanelContainer) {
-  const [currentPanel, setCurrentPanel] = useState("freeVersion");
+  const [currentPanel, setCurrentPanel] = useState("proofs");
   return (
     <div className="Historical">
       <ProcessHeader

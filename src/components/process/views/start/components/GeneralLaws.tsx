@@ -41,11 +41,11 @@ export default function GeneralLaws(props: IPanelContainer) {
   };
 
   return (
-    <div className="">
+    <div style={{ marginTop: "30px" }}>
+      <h4>Encabezado</h4>
       <form onSubmit={formik.handleSubmit}>
         <textarea
           className="TextArea"
-          style={{ width: "600px" }}
           name="description"
           value={formik.values.description}
           onChange={formik.handleChange}

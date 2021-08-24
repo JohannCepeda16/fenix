@@ -28,7 +28,7 @@ export default function ProofView(props: IPanelContainer) {
         }}
         onClick={() => addNewProof()}
       >
-        Pruebas
+        Listar Pruebas
       </Button>
       {modalVisible && <ListProofs setModalVisible={setModalVisible} />}
     </div>

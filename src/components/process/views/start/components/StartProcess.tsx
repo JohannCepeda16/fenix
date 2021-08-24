@@ -18,7 +18,7 @@ export default function StartProcess(props: IPanelContainer) {
       <div>
         <div style={{ marginLeft: "0px" }} className="Modal-item">
           <label className="Modal-item-label">
-            <strong>Fecha de agendamiento:</strong>
+            <strong>Fecha de inicio: </strong>
             {infringement.schedulingDate}
           </label>
         </div>
@@ -31,7 +31,7 @@ export default function StartProcess(props: IPanelContainer) {
       <div style={{ marginLeft: "0px" }} className="Modal-item">
         <label className="Modal-item-label">
           <strong>No. de proceso:</strong>
-          <strong style={{ marginLeft: "2px", color: "#a9ba18" }}>
+          <strong style={{ marginLeft: "5px", color: "#a9ba18" }}>
             {infringement.processNumber}
           </strong>
         </label>

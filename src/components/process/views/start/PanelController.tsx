@@ -1,4 +1,3 @@
-import { Grid } from "@material-ui/core";
 import StartProcess from "./components/StartProcess";
 import { IPanelContainer } from "../../types/Controller";
 import { useState } from "react";
@@ -7,18 +6,14 @@ import "../../styles/ModalView.scss";
 import GeneralLaws from "./components/GeneralLaws";
 import { colors } from "../../../../constants";
 
-export default function ModalContainer(props: IPanelContainer) {
+export default function PanelController(props: IPanelContainer) {
   const infringement = props.infringement;
   const setModalVisible = props.setModalVisible;
   const [step, setStep] = useState(0);
 
   const continueAction = () => {
     props.setInfringement({ ...infringement, status: "Iniciado" });
-    if (step >= 0 && step < 1) {
-      setStep(step + 1);
-    } else {
-      alert("Redirecciona a la vista de todo el comparendo");
-    }
+    alert("Proceso iniciado. Debe redireccionar al historico");
   };
 
   const cancelAction = () => {
@@ -28,52 +23,30 @@ export default function ModalContainer(props: IPanelContainer) {
   if (props.visibile) {
     return (
       <div className="Modal-container">
-        <div className="Modal">
-          <Grid
-            container
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-            style={{ marginBottom: "20px" }}
+        <StartProcess
+          infringement={infringement}
+          setInfringement={props.setInfringement}
+        />
+
+        <GeneralLaws
+          infringement={infringement}
+          setInfringement={props.setInfringement}
+        />
+
+        <div style={{ marginTop: "20px" }}>
+          <Button
+            variant="contained"
+            style={{
+              color: "black",
+              backgroundColor: colors.primary,
+              marginTop: "10px",
+              paddingLeft: "40px",
+              paddingRight: "40px",
+            }}
+            onClick={() => continueAction()}
           >
-            <label style={{ fontSize: "1.1rem" }}>
-              <strong>{step === 0 ? "Iniciar proceso" : "Encabezado"}</strong>
-            </label>
-            <div>
-              <label style={{ display: "block" }}>No. de comparendo</label>
-              <label className="Modal-infringement-id">{infringement.id}</label>
-            </div>
-          </Grid>
-
-          {step === 0 && (
-            <StartProcess
-              infringement={infringement}
-              setInfringement={props.setInfringement}
-            />
-          )}
-
-          {step === 1 && (
-            <GeneralLaws
-              infringement={infringement}
-              setInfringement={props.setInfringement}
-            />
-          )}
-
-          <div style={{ float: "right", marginTop: "20px" }}>
-            <Button
-              variant="contained"
-              style={{
-                color: "black",
-                backgroundColor: colors.primary,
-                margin: "10px",
-                paddingLeft: "40px",
-                paddingRight: "40px",
-              }}
-              onClick={() => continueAction()}
-            >
-              {step === 0 ? "Aceptar" : "Guardar"}
-            </Button>
-          </div>
+            Iniciar
+          </Button>
         </div>
       </div>
     );

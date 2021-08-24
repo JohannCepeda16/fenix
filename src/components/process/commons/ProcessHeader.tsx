@@ -47,7 +47,7 @@ export default function ProcessHeader(props: IPanelContainer) {
           [C35]
         </label>
       </div>
-      <hr />
+      <hr style={{ marginTop: "30px", marginBottom: "30px" }} color="#e3e3e3" />
     </div>
   );
 }
