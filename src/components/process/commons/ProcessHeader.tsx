@@ -1,5 +1,9 @@
 import { IPanelContainer } from "../types/Controller";
-import "./ProcessHeader.scss";
+import "../styles/ProcessHeader.scss";
+import IconButton from "@material-ui/core/IconButton";
+import VisibilityIcon from "@material-ui/icons/Visibility";
+import { colors } from "../../../constants";
+import Visibility from "@material-ui/icons/Visibility";
 
 export default function ProcessHeader(props: IPanelContainer) {
   const infringement = props.infringement;
@@ -29,14 +33,21 @@ export default function ProcessHeader(props: IPanelContainer) {
       <div className="Item-container">
         <label className="List-item">
           <strong>Previsualizar acto: </strong>
-          [Icon button]
+          <IconButton
+            style={{ margin: "0px", padding: "0px" }}
+            onClick={() => alert("Previsualizar acto")}
+          >
+            <Visibility
+              style={{ margin: "0px", padding: "0px", color: colors.primary }}
+            />
+          </IconButton>
         </label>
         <label className="List-item">
           <strong>Infracción: </strong>
           [C35]
         </label>
       </div>
-      <hr/>
+      <hr />
     </div>
   );
 }

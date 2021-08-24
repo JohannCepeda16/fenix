@@ -1,7 +1,7 @@
 import Button from "@material-ui/core/Button";
 import { useFormik } from "formik";
 import { useState } from "react";
-import "./Forms.scss";
+import "../../../styles/Forms.scss"
 
 export default function FreeVersionForm() {
   const [freeVersion, setFreeVersion] = useState("");

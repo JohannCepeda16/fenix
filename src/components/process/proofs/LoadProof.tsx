@@ -1,6 +1,6 @@
 import Button from "@material-ui/core/Button";
 import { useFormik } from "formik";
-import "../ModalView.scss";
+import "../styles/ModalView.scss";
 import PublishIcon from "@material-ui/icons/Publish";
 import FormControl from "@material-ui/core/FormControl";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";

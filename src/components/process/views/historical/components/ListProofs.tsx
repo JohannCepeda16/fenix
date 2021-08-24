@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
-import "../ModalView.scss";
-import "../../forms/Forms.scss";
+import "../../../styles/ModalView.scss"
+import "../../../styles/Forms.scss"
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import Radio, { RadioProps } from "@material-ui/core/Radio";

@@ -1,0 +1,6 @@
+const generalLaws =
+  "En Bogotá D. C. a los veintiuno (21) días del mes de enero de 2021, siendo las 8:05 am, y estando dentro del término legal, la Autoridad de Tránsito avoca conocimiento de la solicitud incoada por el peticionario, señor HENRRI GONZALEZ PAYAN , identificado con cédula de ciudadanía No. 16.497.029 quien manifiesta ser el conductor del vehículo de la referencia, respecto de la orden de comparendo de la referencia y dando aplicación a los artículos 134, 135 modificado por el artículo 22 de la ley 1383 de 2010 y 136 de la Ley 769 del 2.002, modificado por el artículo 24 de la ley 1383 de 2010 y 205 del Decreto 019 de 2012 con excepción de los parágrafos 1 y 2, los cuales conservarán su vigencia, se constituye en audiencia pública en asocio de un Profesional de la Secretaria de Movilidad, declarándola legalmente abierta. A quien se le hace saber que la declaración que va a rendir tiene carácter de libre y espontánea sin apremio del juramento, procede a escucharlo(a), no sin antes advertir que según lo dispuesto en el artículo 138 del Código Nacional de Tránsito, tiene derecho a ser asistido (a) por un (a) Abogado (a) en ejercicio si así lo desea, a lo que manifiesta que NO.";
+
+export default{
+    generalLaws,
+}
