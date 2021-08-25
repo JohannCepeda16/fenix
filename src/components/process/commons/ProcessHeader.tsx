@@ -1,7 +1,6 @@
 import { IPanelContainer } from "../types/Controller";
 import "../styles/ProcessHeader.scss";
 import IconButton from "@material-ui/core/IconButton";
-import VisibilityIcon from "@material-ui/icons/Visibility";
 import { colors } from "../../../constants";
 import Visibility from "@material-ui/icons/Visibility";
 
@@ -10,7 +9,7 @@ export default function ProcessHeader(props: IPanelContainer) {
 
   return (
     <div className="">
-      <h4 className="Proces-tittle">Propietario: {infringement.name}</h4>
+      <h4 className="Proces-tittle">Impugnante: {infringement.name}</h4>
       <div className="Item-container">
         <label className="List-item">
           <strong>Tipo doc: </strong>CC

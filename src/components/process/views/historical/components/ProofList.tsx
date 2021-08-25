@@ -12,13 +12,25 @@ import InsertDriveFileIcon from "@material-ui/icons/InsertDriveFile";
 import { IconButton } from "@material-ui/core";
 import "../../../styles/Forms.scss";
 import { colors } from "../../../../../constants";
+import { useEffect, useState } from "react";
 
 export default function ProofList(props: any) {
   const data = props.proofList;
+  const [rows, setRows] = useState([]);
+
+  useEffect(() => {
+    let localRows: any = [];
+    data.map((item: any, i: number) => {
+      localRows.push(
+        createData(i + 1, item.name, item.date, item.description, item.type)
+      );
+    });
+    setRows(localRows);
+  }, [props.proofList]);
 
   const StyledTableCell = withStyles((theme) => ({
     head: {
-      backgroundColor: colors.secondary,
+      backgroundColor: colors.primary,
       color: theme.palette.common.black,
     },
     body: {
@@ -44,12 +56,6 @@ export default function ProofList(props: any) {
     return { id, name, date, description, type };
   }
 
-  const rows = [
-    data.map((item: any, i: number) => {
-      createData(i, item.name, item.date, item.description, item.type);
-    }),
-  ];
-
   const useStyles = makeStyles({
     table: {
       minWidth: 700,
@@ -70,21 +76,25 @@ export default function ProofList(props: any) {
               <StyledTableCell align="center">Fecha</StyledTableCell>
               <StyledTableCell align="center">Descripción</StyledTableCell>
               <StyledTableCell align="center">Tipo</StyledTableCell>
-              <StyledTableCell align="center">Practicar pruebas</StyledTableCell>
+              <StyledTableCell align="center">
+                Practicar pruebas
+              </StyledTableCell>
               <StyledTableCell align="center">Decretar</StyledTableCell>
               <StyledTableCell align="center">Negar</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <StyledTableRow key={row.id}>
+            {rows.map((row: any, j: number) => (
+              <StyledTableRow key={j}>
                 <StyledTableCell component="th" scope="row">
-                  {row.name}
+                  {row.id}
                 </StyledTableCell>
-                <StyledTableCell align="center">{row.calories}</StyledTableCell>
-                <StyledTableCell align="center">{row.fat}</StyledTableCell>
-                <StyledTableCell align="center">{row.carbs}</StyledTableCell>
-                <StyledTableCell align="center">{row.protein}</StyledTableCell>
+                <StyledTableCell align="center">{row.name}</StyledTableCell>
+                <StyledTableCell align="center">{row.date}</StyledTableCell>
+                <StyledTableCell align="center">
+                  {row.description}
+                </StyledTableCell>
+                <StyledTableCell align="center">{row.type}</StyledTableCell>
                 <StyledTableCell align="center">
                   <IconButton className="Table-icon">
                     <InsertDriveFileIcon

@@ -8,7 +8,7 @@ export default function FreeVersionForm() {
 
   const formik = useFormik({
     initialValues: {
-      freeVersion: "",
+      freeVersion: freeVersion,
     },
     onSubmit: (values) => {
       setFreeVersion(JSON.stringify(values));
