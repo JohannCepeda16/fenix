@@ -1,0 +1,81 @@
+// GET FULL INFO (get impugnment)
+impugnment={
+    generalInfo:{
+        transitAgency: string,
+        processDate: string,
+        offenseType: string,
+        offenseCode: string,
+        time: string,
+        notificationDate: string,
+        notificationType: string,
+        impositionMethod: string,
+        mainRoad: string,
+        sideline: string,
+        country: string,
+        department: string,
+        city: string,
+        location: string,
+        address: string,
+        inpugnmentCode: string,           
+    },
+
+    offenderData:{
+        [... more info ....]
+    }
+
+    [... more info ....]
+}
+
+// GET (get historicals)
+historicals = [
+    {
+        intialDate: string,
+        endDate: string,
+        status: string,
+        manager: string,
+        consecutiveNumber: string
+    },
+    {
+        intialDate: string,
+        endDate: string,
+        status: string,
+        manager: string,
+        consecutiveNumber: string
+    },
+
+    [... more info ... ]
+]
+
+// POST (set status process)
+body: {
+    status: string,
+}
+
+// POST (save opening document)
+body:{
+    opening: string,
+    date: string,
+    time: string,
+    offender: string,
+    documentType: string,
+    documentNumber: string,
+}
+
+// POST (suspend hearing view)
+body:{
+    reason: string,
+    nextDate: string,
+    considerations: string,
+    solve: string
+}
+
+// POST (free version view)
+body:{
+    description: string
+}
+
+// POST (make request view)
+body:{
+    type: string,
+    description: string,
+}

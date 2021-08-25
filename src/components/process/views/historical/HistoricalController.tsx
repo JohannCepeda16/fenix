@@ -7,10 +7,12 @@ import ProofView from "./components/ProofView";
 import ProofList from "./components/ProofList";
 import AddProof from "./components/AddProof";
 import { useEffect } from "react";
+import History from "./components/History";
 
 export default function HistoricalController(props: IPanelContainer) {
-  const [currentPanel, setCurrentPanel] = useState("proofs");
+  const [currentPanel, setCurrentPanel] = useState("history");
   const [proofList, setProofList] = useState([]);
+  const inpugnments = [{}];
 
   const addNewProof = (proof: never) => {
     console.log("adding...");
@@ -33,6 +35,8 @@ export default function HistoricalController(props: IPanelContainer) {
           setInfringement={props.setInfringement}
         />
       )}
+
+      {currentPanel === "history" && <History inpugnments={[]} />}
 
       {currentPanel === "freeVersion" && (
         <div className="Historical-panel">

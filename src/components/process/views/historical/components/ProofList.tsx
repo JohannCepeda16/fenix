@@ -5,6 +5,7 @@ import "../../../styles/Forms.scss";
 import { useEffect, useState } from "react";
 import CustomTable from "../../../commons/CustomTable";
 import ThumbUp from "@material-ui/icons/ThumbUp";
+import { PregnantWoman } from "@material-ui/icons";
 
 export default function ProofList(props: any) {
   const data = props.proofList;
@@ -28,8 +29,8 @@ export default function ProofList(props: any) {
     data.map((proof: any, i: number) => {
       proof["id"] = i + 1;
       proof["proof"] = (
-        <IconButton className="Iconbutton">
-          <InsertDriveFileIcon className="Table-icon" />
+        <IconButton onClick={() => alert("Hola")} className="Iconbutton">
+          <PregnantWoman className="Table-icon" />
         </IconButton>
       );
       proof["approve"] = (

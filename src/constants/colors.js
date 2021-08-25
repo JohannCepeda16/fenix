@@ -4,6 +4,7 @@ const third = "#5cb030";
 const dark = "#000";
 const light = "#fff";
 const disabled = "#e0e0e0";
+const primaryText = "#5f615e"
 
 export default {
   primary,
@@ -12,4 +13,5 @@ export default {
   dark,
   light,
   disabled,
+  primaryText
 };
