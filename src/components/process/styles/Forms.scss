@@ -20,9 +20,15 @@
   box-shadow: none;
 }
 
-.Table-icon{
+.Iconbutton{
   margin: 0px;
   padding: 0px;
   align-items: center;
   justify-content: center;
+}
+
+.Table-icon{
+    color: #bed000;
+    align-self: center;
+    display: block;
 }
